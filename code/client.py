@@ -3,6 +3,8 @@ import json
 import sys
 import tasks as ts
 import os
+import sys
+import os
 
 def load_json_str(filename):
     with open(filename) as file:
@@ -44,4 +46,11 @@ def main():
     c_f_connection.close()
 
 if __name__ == '__main__':
-    main() 
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('Interrupted')
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)

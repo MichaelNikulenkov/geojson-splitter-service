@@ -1,6 +1,8 @@
 import messages as msg
 import tasks as ts
 import crop_map as cm
+import sys
+import os
 
 def receive_from_slave_callback(ch, method, properties, body):
 
@@ -68,4 +70,11 @@ def main():
     f_m_connection.close()
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('Interrupted')
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
